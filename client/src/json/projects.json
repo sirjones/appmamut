@@ -1,0 +1,20 @@
+{
+  "items" : [
+        {   
+            "id": 1,
+            "name": "Teatro Mandril",
+            "url": "www.teatromandril.com",
+            "image": "img/mandril.png",
+            "summary": "Cultural club located in Boedo",
+            "description": "Cultural club located in Boedo, Buenos Aires. The sites consists in 4 sections bla bla..."
+        },
+        {
+            "id": 2,
+            "name": "NPK Arte Vegetal",
+            "url": "www.npkartevegetal.com.ar",
+            "image": "img/npk.png",
+            "summary": "Construction and mantainance of hydroponic vertical gardens",
+            "description": "Construction and mantainance of hydroponic vertical gardens. The sites consists in 4 sections bla bla..."
+        }
+    ]
+}
