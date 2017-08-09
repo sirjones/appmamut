@@ -119,8 +119,9 @@ class Home extends React.Component {
     return (
       <div id="home">
         <div className="header">
-          <h1 className="title">ALMAMUT</h1>
+          <h2>Let's walk</h2>
           <img src={logo} className="header-logo" alt="logo" />
+          <h1 className="title">ALMAMUT</h1>
         </div>
         <div className="polygon"></div>
       </div>
@@ -132,6 +133,69 @@ class Team extends React.Component {
   render () {
     return (
       <div id="team">
+        <h2>ABOUT US</h2>
+        <h3>A small team with great ideas.</h3>
+        <p className="us text-center">
+          Since 2015 we design and develop responsive web apps focused in user experience and interface,
+          collaborating to achieve quality and stand up.
+        </p>
+        <Services/>
+      </div>
+    )
+  }
+}
+class Services extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      items: [
+        { id: 1,
+          line1: 'Responsive',
+          line2: 'Design',
+          image: 'img/responsive.svg'
+        },
+        { id: 2,
+          line1: 'UX & UI',
+          line2: 'Design',
+          image: 'img/uiux.svg'
+        },
+        { id: 3,
+          line1: 'Web',
+          line2: 'Development',
+          image: 'img/web.svg'
+        },
+        { id: 4,
+          line1: 'Mobile',
+          line2: 'First',
+          image: 'img/mobile.svg'
+        }
+      ]
+    }
+  }
+
+  render () {
+    let items = this.state.items
+    return (
+      <div id="services">
+        <ul className="list-inline services">
+          { items.map(item => <li><ServiceItem key={item.id} serv={item}/></li>)}
+        </ul>
+      </div>
+    )
+  }
+}
+
+class ServiceItem extends React.Component {
+  render () {
+    let imgURL = this.props.serv.image
+
+    return (
+      <div className="s-item">
+        <div className="s-img-container">
+          <img className="s-img" src={imgURL} alt={'logo - ' + this.props.serv.line1} />
+        </div>
+        <h4 className="s-title">{this.props.serv.line1}</h4>
+        <h4 className="s-title">{this.props.serv.line2}</h4>
       </div>
     )
   }
@@ -148,8 +212,8 @@ class Projects extends React.Component {
   render () {
     let items = this.state.items
     return (
-      <div className="Projects">
-        <h2 className="our_projects">Our Projects.</h2>
+      <div id="work" className="work">
+        <h2 className="our-projects">WORK</h2>
         {items.map(item =>
           <ProjectItem key={item.id} proj={item}/>)}
       </div>
@@ -162,13 +226,13 @@ class ProjectItem extends React.Component {
     let imgURL = this.props.proj.image
 
     return (
-      <div className="p_item">
-        <div className="p_img_container">
-          <img className="p_img" src={imgURL} alt={'logo - ' + this.props.proj.name} />
+      <div className="p-item">
+        <div className="p-img-container">
+          <img className="p-img" src={imgURL} alt={'logo - ' + this.props.proj.name} />
         </div>
-        <h4 className="p_title">{this.props.proj.name}</h4>
+        <h4 className="p-title">{this.props.proj.name}</h4>
         <hr />
-        <p className="p_summary">{this.props.proj.summary}</p>
+        <p className="p-summary">{this.props.proj.summary}</p>
       </div>
     )
   }
@@ -192,16 +256,19 @@ class Contact extends React.Component {
     }
 
     return (
-    <div>
+    <div id="contact">
+      <img className="tale" src='/img/backMamutTale.svg' />
+      <h2>Let's talk</h2>
       <div className="panel panel-default">
         <div className="panel-body">
           <ContactForm ref="contactForm" />
         </div>
         <div className="panel-footer">
-          <button type="button" className="btn btn-primary btn-block" onClick={this.handleSubmit.bind(this)}>Submit</button>
+          <button type="button" className="send btn btn-primary btn-block" onClick={this.handleSubmit.bind(this)}>Send</button>
         </div>
       </div>
-      {submitted}
+      {/* {submitted} */}
+      <SocialMedia/>
     </div>
     )
   }
@@ -298,6 +365,26 @@ class ContactForm extends React.Component {
   }
 }
 
+class SocialMedia extends React.Component {
+  render () {
+    return (
+      <ul className="socialBtns list-inline">
+        <li><a href="#" target="_blank" className="socialmedia btn facebook"/></li>
+        <li><a href="#" target="_blank" className="socialmedia btn twitter"/></li>
+        <li><a href="#" target="_blank" className="socialmedia btn linkedin"/></li>
+        <li><a href="#" target="_blank" className="socialmedia btn github"/></li>
+      </ul>
+    )
+  }
+}
+
+class Footer extends React.Component {
+  render () {
+    return (
+      <p>with ❤ and code</p>
+    )
+  }
+}
 // Utils
 function $c (staticClassName, conditionalClassNames) {
   let classNames = []
