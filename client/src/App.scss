@@ -225,24 +225,15 @@ button:active {
 }
 
 .header {
-    height: 75vh;
+    height: 80vh;
     padding: 25% 0 15% 0;
     color: $secondary-color;
     background-color: $bone;
 }
 
-.polygon {
-    width: 0;
-    height: 0;
-    margin: 0px;
-    border-left: 50vw solid transparent;
-    border-right: 50vw solid transparent;
-    border-top: 50px solid $bone;
-    background: $primary-color;
-}
-
 // Team
 #team {
+    position: relative;
     min-height: 100vh;
     background: $primary-color;
     background-image: url('/img/backMamutTop.svg');
@@ -250,11 +241,29 @@ button:active {
     background-repeat: no-repeat;
     background-position: 0px 101%;
 }
+.polygon {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    margin: 0px;
+    border-left: 50vw solid $bone;
+    border-right: 50vw solid transparent;
+    border-top: 50px solid $bone;
+    border-bottom: 50px solid transparent;
+}
+.about-us{
+    height: 35vh;
+    padding-top: 10vh;
+    background-image: url('/img/backUs.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
 #team h2{
     padding-top: 0.83em;
     margin: 0;
     text-align: center;
-    color: #FDAD1B;
+    color: $bone;
     font-size: 2.7em;
 }
 #team h3 {

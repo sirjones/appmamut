@@ -123,7 +123,6 @@ class Home extends React.Component {
           <img src={logo} className="header-logo" alt="logo" />
           <h1 className="title">ALMAMUT</h1>
         </div>
-        <div className="polygon"></div>
       </div>
     )
   }
@@ -133,7 +132,11 @@ class Team extends React.Component {
   render () {
     return (
       <div id="team">
-        <h2>ABOUT US</h2>
+        <div className="polygon"></div>
+        <div className="about-us">
+          <h2>ABOUT US</h2>
+          <h3>We &#10084; Code/Design</h3>
+        </div>
         <h3>A small team with great ideas.</h3>
         <p className="us text-center">
           Since 2015 we design and develop responsive web apps focused in user experience and interface,
