@@ -91,8 +91,6 @@ button:active {
 }
 .list-inline > li {
   display: inline-block;
-  padding-right: 5px;
-  padding-left: 5px;
 }
 
 .text-center {
@@ -234,31 +232,57 @@ button:active {
 // Team
 #team {
     position: relative;
+    padding-bottom: 20vh;
     min-height: 100vh;
     background: $primary-color;
-    background-image: url('/img/backMamutTop.svg');
-    background-size: 103%;
-    background-repeat: no-repeat;
-    background-position: 0px 101%;
+    // background-image: url('/img/backMamutTop.svg');
+    // background-size: 103%;
+    // background-repeat: no-repeat;
+    // background-position: 0px 101%;
 }
 .polygon {
     position: absolute;
-    top: 0;
-    width: 0;
-    height: 0;
-    margin: 0px;
-    border-left: 50vw solid $bone;
-    border-right: 50vw solid transparent;
-    border-top: 50px solid $bone;
-    border-bottom: 50px solid transparent;
+    z-index: 3;
+        width: 0;
+        height: 0;
+        margin: 0px;
+    &.top{
+        top: 0;
+        margin: 0px;
+        border-left: 50vw solid transparent;
+        border-right: 50vw solid transparent;
+        border-top: 50px solid $bone;
+    }
+    &.topMembers{
+        top: 0;
+        // border-left: 50vw solid #C95B00;
+        border-left: 50vw solid transparent;
+        border-right: 50vw solid transparent;
+        border-top: 50px solid #C95B00;
+        // border-bottom: 50px solid transparent;
+    }
+    &.bottomMembers{
+        bottom: 0;
+        border-left: 50vw solid #C95B00;
+        border-right: 50vw solid #C95B00;
+        border-top: 50px solid transparent;
+        border-bottom: 50px solid #C95B00;
+    }
 }
 .about-us{
-    height: 35vh;
-    padding-top: 10vh;
-    background-image: url('/img/backUs.jpg');
-    background-size: 100%;
-    background-repeat: no-repeat;
+    position: relative;
+    padding-top: 15vh;
 }
+.teamMember{
+    position: relative;
+    margin: 15vw 0;
+    height: 100vw;
+}
+.imgMembers{
+    float: left;
+    width: 50%;
+}
+
 #team h2{
     padding-top: 0.83em;
     margin: 0;
@@ -267,13 +291,31 @@ button:active {
     font-size: 2.7em;
 }
 #team h3 {
+    font-size: 1.5em;
     text-align: center;
     color: $bone;
+}
+.small-team{
+    width: 90vw;
+    margin: auto;
+}
+.polygon-3 {
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    width: 0;
+    height: 0;
+    margin: 0px;
+    border-left: 50vw solid #000;
+    border-right: 50vw solid #000;
+    border-top: 50px solid #C95B00;
+    border-bottom: 50px solid #000;
 }
 .us {
     width: 90vw;
     margin: auto;
     float: none;
+    padding: 15% 0 5% 0;
     color: #111111;
 }
 // Projects
@@ -339,7 +381,7 @@ button:active {
 }
 
 #services {
-    min-height: 100vh;
+    min-height: 40vh;
     padding: 5% 0 0 0;
     text-align: center;
 }
@@ -347,7 +389,7 @@ button:active {
     margin: 15% auto 10% auto;
 }
 .services li {
-    width: 20%;
+    width: 45%;
 }
 .s-item {
   font-family: $font-stack-primary;
@@ -373,7 +415,7 @@ button:active {
 .s-title {
     width: 100%;
     margin:0;
-    font-size: 0.5em;
+    font-size: 0.6em;
     text-align: center;
     text-transform: uppercase;
     float: none;
@@ -396,9 +438,6 @@ hr{
 #contact h2 {
     color: $primary-color;
     font-weight: bold;
-}
-.tale {
-    width: 100vw;
 }
 
 .panel-default {

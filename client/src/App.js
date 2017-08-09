@@ -132,21 +132,30 @@ class Team extends React.Component {
   render () {
     return (
       <div id="team">
-        <div className="polygon"></div>
+        <div className="polygon top"></div>
         <div className="about-us">
-          <h2>ABOUT US</h2>
-          <h3>We &#10084; Code/Design</h3>
+          <h3>A small team</h3>
+          <h3>with big ideas.</h3>
+          <div className="teamMember">
+            <div className="polygon topMembers"></div>
+            <img src="img/portraitB.jpg" className="imgMembers" />
+            <img src="img/portraitS.jpg" className="imgMembers" />
+            <div className="polygon bottomMembers"></div>
+          </div>
         </div>
-        <h3>A small team with great ideas.</h3>
-        <p className="us text-center">
-          Since 2015 we design and develop responsive web apps focused in user experience and interface,
-          collaborating to achieve quality and stand up.
-        </p>
         <Services/>
+        <div className="small-team">
+          <p className="us text-center">
+            Since 2015 we design and develop responsive web apps focused in user experience and interface,
+            collaborating to achieve quality and stand up.
+          </p>
+        </div>
+        <div className="polygon-3"></div>
       </div>
     )
   }
 }
+
 class Services extends React.Component {
   constructor () {
     super()
@@ -260,9 +269,8 @@ class Contact extends React.Component {
 
     return (
     <div id="contact">
-      <img className="tale" src='/img/backMamutTale.svg' />
-      <h2>Let's talk</h2>
       <div className="panel panel-default">
+      <h2>Let's talk</h2>
         <div className="panel-body">
           <ContactForm ref="contactForm" />
         </div>
