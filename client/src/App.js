@@ -17,6 +17,19 @@ class App extends React.Component {
   }
 }
 
+class SocialMedia extends React.Component {
+  render () {
+    return (
+      <ul className="socialBtns list-inline">
+        <li><a href="http://fb.me/almamutcom" target="_blank" className="socialmedia btn facebook"/></li>
+        <li><a href="https://twitter.com/almamutcom" target="_blank" className="socialmedia btn twitter"/></li>
+        <li><a href="http://www.linkedin.com/company-beta/18210603/" target="_blank" className="socialmedia btn linkedin"/></li>
+        <li><a href="https://github.com/almamutcom" target="_blank" className="socialmedia btn github"/></li>
+      </ul>
+    )
+  }
+}
+
 // nav items
 const items = [{
   id: 0,
@@ -98,17 +111,14 @@ class NavList extends React.Component {
           href={'#' + (items.itemName).toLowerCase()}>
             {items.itemName}
           </a>
-          {/* <NavItem
-              itemName = { items.itemName }
-              className = { items.className }
-              href = { items.href }
-              propClass = { propClass }
-              rel= { items.rel }
-          /> */}
       </li>
     ))
     return (
-      <ul id="navRight" className="c-menu__items c-menu c-menu--push-right"> {itemsElements} </ul>
+      <div>
+        <ul id="navRight" className="c-menu__items c-menu c-menu--push-right"> {itemsElements} 
+        <SocialMedia />
+        </ul>
+      </div>
     )
   }
 }
@@ -116,9 +126,9 @@ window.Nav.NavList = NavList
 
 // li
 class NavItem extends React.Component {
-  handleClick() {
-    console.log('wabadaba')
-  }
+  // handleClick() {
+  //   console.log('wabadaba')
+  // }
   render () {
     const {
       itemName,
@@ -307,7 +317,6 @@ class Contact extends React.Component {
         </div>
       </div>
       {submitted}
-      <SocialMedia/>
     </div>
     )
   }
@@ -433,19 +442,6 @@ class ContactForm extends React.Component {
     <div className={$c('form-group', {'has-error': id in this.state.errors})}>
         {field}
     </div>
-    )
-  }
-}
-
-class SocialMedia extends React.Component {
-  render () {
-    return (
-      <ul className="socialBtns list-inline">
-        <li><a href="http://fb.me/almamutcom" target="_blank" className="socialmedia btn facebook"/></li>
-        <li><a href="https://twitter.com/almamutcom" target="_blank" className="socialmedia btn twitter"/></li>
-        <li><a href="http://www.linkedin.com/company-beta/18210603/" target="_blank" className="socialmedia btn linkedin"/></li>
-        <li><a href="https://github.com/almamutcom" target="_blank" className="socialmedia btn github"/></li>
-      </ul>
     )
   }
 }

@@ -86,7 +86,6 @@ button:active {
 
 .list-inline {
   padding-left: 0;
-  margin-left: -5px;
   list-style: none;
 }
 .list-inline > li {
@@ -115,7 +114,10 @@ button:active {
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
 }
-
+.btn:focus, .btn:active:focus,
+.btn:focus, .btn:active  {
+    outline: none !important;
+}
 .nav-icon span {
     display: block;
     position: absolute;
@@ -501,18 +503,18 @@ textarea {
     margin-top: 3%;
     padding: 10px;
     width: 50vw;
-    background-color: $primary-color;
+    background-color: #FD7B1B;
     color: $bone;
 }
 
-
-.socialmedia { 
+#navRight .socialmedia,
+#contact .socialmedia { 
     background-size: auto 100%;
     background-repeat: no-repeat;
     padding: 0;
     margin: 0;
 }
-.socialBtns {
+#contact .socialBtns {
     padding: 5% 0 10% 0;
 } 
 
@@ -610,6 +612,12 @@ a.btn.disabled {
 // NAV NAV NAV NAV NAV
 
 /*** MENU ***/
+#navRight .socialBtns {
+    padding: 0;
+    margin: auto;
+    float: none;
+}
+
 #c-button--push-right {
   position: fixed;
   z-index: 999;
@@ -627,7 +635,7 @@ a.btn.disabled {
 .c-menu {
   position: fixed;
   z-index: 200;
-  background-color: red;
+  background-color: #FDAD1B;
   transition: transform 0.3s;
   height: 100%;
   width: 300px;
