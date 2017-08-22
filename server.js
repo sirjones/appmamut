@@ -51,7 +51,7 @@ app.get('/contact', (req, res) => {
 
 
   return res.json({
-    success: "Thanks for contacting us. We'll get in touch as soon as possible"
+    success: true
   })
 })
 

@@ -50,7 +50,6 @@ class Nav extends React.Component {
   }
   navToggle () {
     this.state.open = !this.state.open
-    console.log(this.state.open)
 
     if (this.state.open) {
       document.body.classList.add('has-active-menu')
@@ -240,7 +239,10 @@ class ServiceItem extends React.Component {
 class Projects extends React.Component {
   constructor () {
     super()
-    this.state = {items: []}
+    this.state = {
+      items: [],
+      errorSent: false
+    }
   }
   componentWillMount () {
     this.setState({items: projects_json.items})
@@ -288,8 +290,7 @@ class Contact extends React.Component {
     let submitted
     if (this.state.submitted !== null) {
       submitted = <div className="alert alert-success">
-        <p>ContactForm data:</p>
-        <pre><code>{JSON.stringify(this.state.submitted, null, '  ')}</code></pre>
+        <p>{this.state.submitted}</p>
       </div>
     }
 
@@ -305,7 +306,7 @@ class Contact extends React.Component {
           <button type="button" className="send btn btn-primary btn-block" onClick={this.handleSubmit.bind(this)}>Send</button>
         </div>
       </div>
-      {/* {submitted} */}
+      {submitted}
       <SocialMedia/>
     </div>
     )
@@ -318,14 +319,19 @@ class Contact extends React.Component {
 
   handleSubmit () {
     if (this.refs.contactForm.isValid()) {
-      this.setState({submitted: this.refs.contactForm.getFormData()})
       let query = this.refs.contactForm.getFormData()
-      console.log(query)
       fetch(`contact?name=${query.name}&mail=${query.email}&body=${query.message}`)
-      .then((response) => console.log(response.json()))
+      .then((response) => {
+        if (response.ok) {
+          this.setState({submitted: 'Thank you! Your message has been sent. We will get in touch as soon as possible'})
+        } else {
+          this.setState({submitted: 'Sorry. There seems to be a problem with our server, please contact us to our mail contacto@almamut.com, or wait a few minutes and try again'})
+        }
+      })
     } else {
-      console.log(this.refs.contactForm.state.errors)
-      console.log(this.refs.contactForm.state.errors['name'])
+      if(this.refs.contactForm.state.errors)
+      this.refs.contactForm.showError(this.state.errorSent)
+      this.state.errorSent = true
     }
   }
 }
@@ -369,6 +375,15 @@ class ContactForm extends React.Component {
     return isValid
   }
 
+  showError (errSent) {
+    let errors = this.state.errors
+    if(!errSent){
+      for(var key in errors) {
+        document.getElementById(key).placeholder += ' *'
+      }
+    }
+  }
+
   getFormData () {
     var data = {
       name: this.refs.name.value,
@@ -388,15 +403,28 @@ class ContactForm extends React.Component {
     )
   }
 
+  handleChange (id) {
+    let fld = document.getElementById(id)
+    fld.classList.remove('required')
+  }
+
   renderTextInput (id, label) {
     return this.renderField(id, label,
-      <input type="text" placeholder={label} className="form-control" id={id} ref={id}/>
+      <input type="text" placeholder={label} 
+      onChange={this.handleChange.bind(this, id)} 
+      className="form-control" 
+      id={id} 
+      ref={id}/>
     )
   }
 
   renderTextarea (id, label) {
     return this.renderField(id, label,
-      <textarea className="form-control" placeholder={label} id={id} ref={id}/>
+      <textarea className="form-control" 
+      onChange={this.handleChange.bind(this, id)} 
+      placeholder={label} 
+      id={id} 
+      ref={id}/>
     )
   }
 
