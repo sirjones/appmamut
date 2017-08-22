@@ -215,9 +215,9 @@ button:active {
   .polygon.bottomTeam {
     bottom: 0;
     border-left: 50vw solid #fafafa;
-    border-right: 50vw solid #000;
+    border-right: 50vw solid #111111;
     border-top: 50px solid #fafafa;
-    border-bottom: 50px solid #000; }
+    border-bottom: 50px solid #111111; }
   .polygon.topContact {
     position: relative;
     bottom: 0;
@@ -264,7 +264,8 @@ button:active {
   float: none;
   color: #111111; }
 
-.work {
+#work {
+  overflow: auto;
   width: 100%;
   min-height: 100vh;
   background: #111111;
@@ -319,6 +320,7 @@ button:active {
   font-size: 1em; }
 
 #services {
+  position: relative;
   min-height: 40vh;
   padding: 5% 0 0 0;
   text-align: center; }
@@ -330,6 +332,7 @@ button:active {
   width: 45%; }
 
 .s-item {
+  position: relative;
   font-family: "Lato", sans-serif;
   width: 100%;
   height: auto;
@@ -343,13 +346,14 @@ button:active {
   text-align: center; }
 
 .s-img {
-  z-index: -1;
+  position: relative;
   width: 60%;
   padding: 15% 0;
   margin: auto;
   float: none; }
 
 .s-title {
+  position: relative;
   width: 100%;
   margin: 0;
   font-size: 0.6em;
@@ -365,6 +369,8 @@ hr {
   border-top: 1px solid #fafafa; }
 
 #contact {
+  overflow: auto;
+  width: 100vw;
   min-height: 100vh;
   background-color: #fafafa;
   text-align: center; }
@@ -397,6 +403,9 @@ hr {
   text-align: center;
   font-size: 1.2em; }
 
+.required:after {
+  border: 2px solid orangered; }
+
 .form-group {
   text-align: center; }
 
@@ -420,7 +429,7 @@ textarea {
   margin: 0; }
 
 .socialBtns {
-  padding: 15% 0 10% 0; }
+  padding: 5% 0 10% 0; }
 
 .twitter {
   background-image: url("/img/twitter.svg");
@@ -625,7 +634,7 @@ body.has-active-menu {
   overflow: hidden;
   width: 0;
   height: 0;
-  background-color: #000;
+  background-color: #111111;
   opacity: 0;
   transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s; }
 
@@ -662,5 +671,228 @@ body.has-active-menu {
 @media all and (min-width: 320px) {
   .o-wrapper.has-push-right {
     transform: translateX(-300px); } }
+@media only screen and (orientation: landscape) {
+  #home {
+    background-size: cover; }
+
+  .header-logo {
+    width: 30vw;
+    float: none; }
+
+  .logo-word {
+    width: 30vw;
+    float: none;
+    padding-top: 2%; }
+
+  .header {
+    padding: 2% 0 2% 0;
+    height: 100vh; }
+
+  .s-item {
+    margin: 0;
+    margin-bottom: 10%; }
+
+  .p-item {
+    margin: 2% 5%;
+    height: 15vw; }
+
+  .p-img-container {
+    height: 100%; }
+
+  .p-img {
+    padding: 5% 0;
+    height: 80%; }
+
+  .socialmedia {
+    margin: 2vw; }
+
+  .form-control {
+    width: 60vw; }
+
+  .send {
+    width: 30vw; } }
+@media only screen and (min-width: 568px) {
+  .header-logo {
+    width: 50vw; }
+
+  .logo-word {
+    width: 40vw; }
+
+  .header {
+    padding: 2% 0;
+    height: 100vh; }
+
+  .about-us {
+    padding-top: 5vh; }
+
+  #team h3 {
+    font-size: 2em; }
+
+  .teamMember {
+    margin-top: 5vh; }
+
+  .slogan {
+    padding: 10% 0 0 0; }
+
+  .profession {
+    padding-top: 20%; }
+
+  .highlight {
+    font-size: 2em; } }
+@media only screen and (min-width: 768px) {
+  #home {
+    background-size: cover !important;
+    font-size: 1.8em; }
+
+  #team h3 {
+    font-size: 3em; }
+
+  .us {
+    font-size: 2em; }
+
+  #services {
+    min-height: auto; }
+
+  .services {
+    width: 90vw;
+    height: auto;
+    margin: auto; }
+
+  .services li {
+    width: 15%;
+    height: auto;
+    margin: auto 5%; }
+
+  .s-item {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: auto; }
+
+  .s-img-container {
+    width: 100%;
+    height: auto;
+    float: left; }
+
+  .s-img {
+    height: auto;
+    width: 100%;
+    padding: 0 0 25px 0;
+    vertical-align: top; }
+
+  .s-title {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold; }
+
+  .p-title {
+    font-size: 2.4em;
+    margin-bottom: 2%; }
+
+  .p-summary {
+    font-size: 2em;
+    margin-top: 2%; }
+
+  #contact h2 {
+    font-size: 3em; }
+
+  .form-control {
+    padding: 20px;
+    font-size: 2em; }
+
+  .form-control::placeholder {
+    font-size: 1em; }
+
+  .send {
+    padding: 20px;
+    font-size: 1.8em; } }
+@media only screen and (min-width: 1025px) {
+  #home {
+    background-size: cover; }
+
+  .header-logo {
+    width: 10vw;
+    float: none; }
+
+  .logo-word {
+    width: 20vw;
+    float: none;
+    padding-top: 2%; }
+
+  .header {
+    padding: 2% 0 2% 0;
+    height: 100vh; }
+
+  .imgMembers {
+    width: 20%;
+    float: none; }
+
+  .teamMember {
+    height: 25vw;
+    text-align: center; }
+
+  #team h3 {
+    font-size: 2em; }
+
+  .polygon.topMembers {
+    display: none; }
+
+  .s-item {
+    margin: 0;
+    margin-bottom: 10%; }
+
+  .services li {
+    width: 10%; }
+
+  .s-title {
+    font-size: 1em; }
+
+  .work {
+    position: relative;
+    width: 80vw;
+    float: none;
+    margin: auto;
+    height: auto; }
+
+  .p-item {
+    width: 45%;
+    margin: 2%;
+    float: left;
+    height: 20vh; }
+
+  .p-title {
+    font-size: 1.3em; }
+
+  .p-summary {
+    font-size: 1em; }
+
+  .p-img-container {
+    height: 100%; }
+
+  .p-img {
+    padding: 5% 0;
+    height: 70%; }
+
+  .socialBtns, .panel-default {
+    float: left;
+    width: 50%; }
+
+  .panel-body, .panel-footer {
+    padding-left: 15%; }
+
+  .socialmedia {
+    margin: 1vw; }
+
+  .form-control {
+    width: 30vw;
+    padding: 5px;
+    font-size: 1em; }
+
+  .send {
+    width: 10vw;
+    font-size: 1.2em;
+    padding: 10px;
+    margin-top: 1%; } }
 
 /*# sourceMappingURL=App.css.map */

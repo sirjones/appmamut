@@ -145,8 +145,8 @@ class Home extends React.Component {
       <div id="home">
         <div className="header">
           <h2>Let's walk</h2>
-          <img src={logo} className="header-logo" alt="logo" />
-          <img src="img/almamut17word.svg" className="logo-word" alt="logo" />
+          <img src={logo} className="header-logo" alt="logo" /> <br/>
+          <img src="img/almamut17word2.svg" className="logo-word" alt="logo" />
               <div className="polygon bottom"></div>
         </div>
       </div>
@@ -229,9 +229,9 @@ class ServiceItem extends React.Component {
       <div className="s-item">
         <div className="s-img-container">
           <img className="s-img" src={imgURL} alt={'logo - ' + this.props.serv.line1} />
-        </div>
-        <h4 className="s-title">{this.props.serv.line1}</h4>
-        <h4 className="s-title">{this.props.serv.line2}</h4>
+        </div> <br/>
+        <p className="s-title">{this.props.serv.line1}</p>
+        <p className="s-title">{this.props.serv.line2}</p>
       </div>
     )
   }
@@ -248,11 +248,13 @@ class Projects extends React.Component {
   render () {
     let items = this.state.items
     return (
-      <div id="work" className="work">
-        <h2 className="our-projects">WORK</h2>
-        {items.map(item =>
-          <ProjectItem key={item.id} proj={item}/>)}
-      </div>
+      <section id="work">
+        <div className="work">
+          <h2 className="our-projects">WORK</h2>
+          {items.map(item =>
+            <ProjectItem key={item.id} proj={item}/>)}
+        </div>
+      </section>
     )
   }
 }
@@ -294,8 +296,8 @@ class Contact extends React.Component {
     return (
     <div id="contact">
       <div className="polygon topContact"></div>
-      <div className="panel panel-default">
       <h2>Let's talk</h2>
+      <div className="panel panel-default">
         <div className="panel-body">
           <ContactForm ref="contactForm" />
         </div>
@@ -323,6 +325,7 @@ class Contact extends React.Component {
       .then((response) => console.log(response.json()))
     } else {
       console.log(this.refs.contactForm.state.errors)
+      console.log(this.refs.contactForm.state.errors['name'])
     }
   }
 }
@@ -344,8 +347,13 @@ class ContactForm extends React.Component {
 
     fields.forEach(function (field) {
       let value = document.getElementById(field).value
+      let fld = document.getElementById(field)
       if (value === '' || value === null) {
         errors[field] = 'This field is required'
+        let fld = document.getElementById(field)
+        fld.classList.add('required')
+      } else {
+        fld.classList.remove('required')
       }
     })
 
@@ -405,10 +413,10 @@ class SocialMedia extends React.Component {
   render () {
     return (
       <ul className="socialBtns list-inline">
-        <li><a href="#" target="_blank" className="socialmedia btn facebook"/></li>
-        <li><a href="#" target="_blank" className="socialmedia btn twitter"/></li>
-        <li><a href="#" target="_blank" className="socialmedia btn linkedin"/></li>
-        <li><a href="#" target="_blank" className="socialmedia btn github"/></li>
+        <li><a href="http://fb.me/almamutcom" target="_blank" className="socialmedia btn facebook"/></li>
+        <li><a href="https://twitter.com/almamutcom" target="_blank" className="socialmedia btn twitter"/></li>
+        <li><a href="http://www.linkedin.com/company-beta/18210603/" target="_blank" className="socialmedia btn linkedin"/></li>
+        <li><a href="https://github.com/almamutcom" target="_blank" className="socialmedia btn github"/></li>
       </ul>
     )
   }
