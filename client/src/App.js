@@ -7,7 +7,7 @@ import projects_json from './json/projects.json'
 class App extends React.Component {
   render () {
     return (
-      <div>
+      <div id="o-wrapper" className="o-wrapper">
         <Home />
         <Team />
         <Projects />
@@ -21,19 +21,23 @@ class App extends React.Component {
 const items = [{
   id: 0,
   itemName: 'Home',
-  className: 'item'
+  className: 'item c-menu__link',
+  rel: 'relativeanchor'
 }, {
   id: 1,
   itemName: 'Team',
-  className: 'item'
+  className: 'item c-menu__link',
+  rel: 'relativeanchor'
 }, {
   id: 2,
   itemName: 'Work',
-  className: 'item'
+  className: 'item c-menu__link',
+  rel: 'relativeanchor'
 }, {
   id: 3,
   itemName: 'Contact',
-  className: 'item'
+  className: 'item c-menu__link',
+  rel: 'relativeanchor'
 }]
 
 // nav
@@ -45,21 +49,38 @@ class Nav extends React.Component {
     }
   }
   navToggle () {
-    this.setState({
-      open: !this.state.open
-    })
+    this.state.open = !this.state.open
+    console.log(this.state.open)
+
+    if (this.state.open) {
+      document.body.classList.add('has-active-menu')
+      document.getElementById('o-wrapper').classList.add('has-push-right')
+      document.getElementById('navRight').classList.add('is-active')
+      document.getElementById('c-mask').classList.add('is-active')
+      document.getElementById('c-button--push-right').classList.add('open')
+    } else {
+      document.body.classList.remove('has-active-menu')
+      document.getElementById('o-wrapper').classList.remove('has-push-right')
+      document.getElementById('navRight').classList.remove('is-active')
+      document.getElementById('c-mask').classList.remove('is-active')
+      document.getElementById('c-button--push-right').classList.remove('open')
+    }
   }
+
+    // this.addEventListener('mouseleave', function (e) {
+    //   e.preventDefault()
+    //   this.close()
+    // }.bind(this))
   render () {
     return (
       <div>
-        <button className={this.state.open ? 'open nav-icon' : 'nav-icon'}
+        <button id="c-button--push-right" type="button" aria-label="Push Right" className="nav-icon btn btn-default c-button"
         onClick={this.navToggle.bind(this)}>
           <span />
           <span />
           <span />
         </button>
-        <NavList propClass={this.state.open ? 'shown' : 'hidden'}
-        items={items} />
+        <NavList items={items} clicked={this.navToggle.bind(this)}/>
       </div>
     )
   }
@@ -70,21 +91,25 @@ window.Nav = Nav
 class NavList extends React.Component {
   render () {
     const {
-      items,
-      propClass
+      items
     } = this.props
     const itemsElements = items.map((items) => (
-      <li id={items.id} key={items.id} className="nav-li">
-          <NavItem
+      <li id={items.id} key={items.id} className="nav-li c-menu__item">
+          <a className={items.className} onClick={this.props.clicked}
+          href={'#' + (items.itemName).toLowerCase()}>
+            {items.itemName}
+          </a>
+          {/* <NavItem
               itemName = { items.itemName }
               className = { items.className }
               href = { items.href }
               propClass = { propClass }
-          />
+              rel= { items.rel }
+          /> */}
       </li>
     ))
     return (
-      <ul className={'nav-items ' + this.props.propClass}>{itemsElements}</ul>
+      <ul id="navRight" className="c-menu__items c-menu c-menu--push-right"> {itemsElements} </ul>
     )
   }
 }
@@ -92,8 +117,8 @@ window.Nav.NavList = NavList
 
 // li
 class NavItem extends React.Component {
-  handleClick () {
-    console.log(this.props.itemName)
+  handleClick() {
+    console.log('wabadaba')
   }
   render () {
     const {
@@ -120,10 +145,10 @@ class Home extends React.Component {
       <div id="home">
         <div className="header">
           <h2>Let's walk</h2>
-          <img src={logo} className="header-logo" alt="logo" />
-          <h1 className="title">ALMAMUT</h1>
+          <img src={logo} className="header-logo" alt="logo" /> <br/>
+          <img src="img/almamut17word2.svg" className="logo-word" alt="logo" />
+              <div className="polygon bottom"></div>
         </div>
-        <div className="polygon"></div>
       </div>
     )
   }
@@ -133,17 +158,28 @@ class Team extends React.Component {
   render () {
     return (
       <div id="team">
-        <h2>ABOUT US</h2>
-        <h3>A small team with great ideas.</h3>
-        <p className="us text-center">
-          Since 2015 we design and develop responsive web apps focused in user experience and interface,
-          collaborating to achieve quality and stand up.
-        </p>
+        <div className="about-us">
+          <h3>A small team<br/>with big ideas.</h3>
+          <div className="teamMember">
+            <div className="polygon topMembers"></div>
+            <img src="img/portraitB.jpg" className="imgMembers" />
+            <img src="img/portraitS.jpg" className="imgMembers" />
+            <div className="polygon bottomMembers"></div>
+          </div>
+        </div>
+        <div className="small-team">
+          <p className="us text-center">
+            Since 2015 we design and develop responsive web apps focused in user experience and interface,
+            collaborating to achieve quality and stand up.
+          </p>
+        </div>
         <Services/>
+        <div className="polygon bottomTeam"></div>
       </div>
     )
   }
 }
+
 class Services extends React.Component {
   constructor () {
     super()
@@ -178,7 +214,7 @@ class Services extends React.Component {
     return (
       <div id="services">
         <ul className="list-inline services">
-          { items.map(item => <li><ServiceItem key={item.id} serv={item}/></li>)}
+          { items.map(item => <li key={item.id}><ServiceItem serv={item}/></li>)}
         </ul>
       </div>
     )
@@ -193,9 +229,9 @@ class ServiceItem extends React.Component {
       <div className="s-item">
         <div className="s-img-container">
           <img className="s-img" src={imgURL} alt={'logo - ' + this.props.serv.line1} />
-        </div>
-        <h4 className="s-title">{this.props.serv.line1}</h4>
-        <h4 className="s-title">{this.props.serv.line2}</h4>
+        </div> <br/>
+        <p className="s-title">{this.props.serv.line1}</p>
+        <p className="s-title">{this.props.serv.line2}</p>
       </div>
     )
   }
@@ -212,11 +248,13 @@ class Projects extends React.Component {
   render () {
     let items = this.state.items
     return (
-      <div id="work" className="work">
-        <h2 className="our-projects">WORK</h2>
-        {items.map(item =>
-          <ProjectItem key={item.id} proj={item}/>)}
-      </div>
+      <section id="work">
+        <div className="work">
+          <h2 className="our-projects">WORK</h2>
+          {items.map(item =>
+            <ProjectItem key={item.id} proj={item}/>)}
+        </div>
+      </section>
     )
   }
 }
@@ -257,7 +295,7 @@ class Contact extends React.Component {
 
     return (
     <div id="contact">
-      <img className="tale" src='/img/backMamutTale.svg' />
+      <div className="polygon topContact"></div>
       <h2>Let's talk</h2>
       <div className="panel panel-default">
         <div className="panel-body">
@@ -284,9 +322,10 @@ class Contact extends React.Component {
       let query = this.refs.contactForm.getFormData()
       console.log(query)
       fetch(`contact?name=${query.name}&mail=${query.email}&body=${query.message}`)
-      .then((response) => console.log( response.json()))    
+      .then((response) => console.log(response.json()))
     } else {
       console.log(this.refs.contactForm.state.errors)
+      console.log(this.refs.contactForm.state.errors['name'])
     }
   }
 }
@@ -308,8 +347,13 @@ class ContactForm extends React.Component {
 
     fields.forEach(function (field) {
       let value = document.getElementById(field).value
+      let fld = document.getElementById(field)
       if (value === '' || value === null) {
         errors[field] = 'This field is required'
+        let fld = document.getElementById(field)
+        fld.classList.add('required')
+      } else {
+        fld.classList.remove('required')
       }
     })
 
@@ -369,10 +413,10 @@ class SocialMedia extends React.Component {
   render () {
     return (
       <ul className="socialBtns list-inline">
-        <li><a href="#" target="_blank" className="socialmedia btn facebook"/></li>
-        <li><a href="#" target="_blank" className="socialmedia btn twitter"/></li>
-        <li><a href="#" target="_blank" className="socialmedia btn linkedin"/></li>
-        <li><a href="#" target="_blank" className="socialmedia btn github"/></li>
+        <li><a href="http://fb.me/almamutcom" target="_blank" className="socialmedia btn facebook"/></li>
+        <li><a href="https://twitter.com/almamutcom" target="_blank" className="socialmedia btn twitter"/></li>
+        <li><a href="http://www.linkedin.com/company-beta/18210603/" target="_blank" className="socialmedia btn linkedin"/></li>
+        <li><a href="https://github.com/almamutcom" target="_blank" className="socialmedia btn github"/></li>
       </ul>
     )
   }
