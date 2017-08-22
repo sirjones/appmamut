@@ -382,6 +382,9 @@ hr {
 .panel-default {
   padding: 2% 0 2% 0; }
 
+.alert {
+  padding: 0 5%; }
+
 .contact-form {
   color: #111111; }
 
@@ -403,7 +406,7 @@ hr {
   text-align: center;
   font-size: 1.2em; }
 
-.required:after {
+.required {
   border: 2px solid orangered; }
 
 .form-group {
